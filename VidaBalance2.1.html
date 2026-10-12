@@ -1,0 +1,2263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VidaBalance - Tu guía completa de vida saludable</title>
+
+  <style>
+    :root{
+      --verde:#2e7d32;
+      --verde-claro:#43a047;
+      --verde-suave:#a5d6a7;
+      --fondo:#f4f8f2;
+      --blanco:#ffffff;
+      --texto:#263238;
+      --gris:#607d8b;
+      --sombra:0 4px 14px rgba(0,0,0,.08);
+
+      --rojo:#c62828;
+      --rojo-fondo:#ffebee;
+      --naranja:#ef6c00;
+      --naranja-fondo:#fff3e0;
+      --amarillo:#f9a825;
+      --amarillo-fondo:#fff8e1;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',system-ui,sans-serif;
+      background:var(--fondo);
+      color:var(--texto);
+      line-height:1.7;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    h2{
+      font-size:1.9rem;
+      color:var(--verde);
+      margin-bottom:.5rem;
+    }
+
+    .section{
+      padding:70px 0;
+    }
+
+    .section-alt{
+      background:var(--blanco);
+    }
+
+    .lead{
+      color:var(--gris);
+      max-width:720px;
+      margin-bottom:2.2rem;
+    }
+
+    /* ================= HEADER ================= */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:var(--blanco);
+      box-shadow:var(--sombra);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:64px;
+    }
+
+    .logo{
+      font-weight:800;
+      font-size:1.3rem;
+      color:var(--verde);
+      text-decoration:none;
+    }
+
+    .logo span{
+      color:var(--verde-claro);
+    }
+
+    nav ul{
+      display:flex;
+      gap:18px;
+      list-style:none;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:var(--texto);
+      font-weight:600;
+      font-size:.92rem;
+    }
+
+    nav a:hover{
+      color:var(--verde);
+    }
+
+    .menu-btn{
+      display:none;
+      background:none;
+      border:none;
+      font-size:1.6rem;
+      cursor:pointer;
+      color:var(--verde);
+    }
+
+    /* ================= HERO ================= */
+
+    .hero{
+      background:linear-gradient(
+        135deg,
+        var(--verde) 0%,
+        var(--verde-claro) 100%
+      );
+      color:#fff;
+      padding:90px 0;
+      text-align:center;
+    }
+
+    .hero h1{
+      font-size:2.8rem;
+      font-weight:800;
+      margin-bottom:1rem;
+    }
+
+    .hero p{
+      font-size:1.15rem;
+      max-width:680px;
+      margin:0 auto 2rem;
+      opacity:.95;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:13px 30px;
+      border-radius:50px;
+      font-weight:700;
+      text-decoration:none;
+      transition:.2s;
+      border:none;
+      cursor:pointer;
+      font-family:inherit;
+      font-size:1rem;
+    }
+
+    .btn-blanco{
+      background:#fff;
+      color:var(--verde);
+    }
+
+    .btn-blanco:hover{
+      transform:translateY(-2px);
+      box-shadow:var(--sombra);
+    }
+
+    .btn-verde{
+      background:var(--verde);
+      color:#fff;
+    }
+
+    .btn-verde:hover{
+      background:var(--verde-claro);
+      transform:translateY(-2px);
+    }
+
+    .btn-outline{
+      background:#fff;
+      color:var(--verde);
+      border:2px solid var(--verde);
+    }
+
+    .btn-outline:hover{
+      background:var(--verde-suave);
+    }
+
+    .stats{
+      display:flex;
+      justify-content:center;
+      gap:40px;
+      flex-wrap:wrap;
+      margin-top:2.5rem;
+    }
+
+    .stat b{
+      font-size:1.8rem;
+      display:block;
+    }
+
+    .stat span{
+      font-size:.85rem;
+      opacity:.9;
+    }
+
+    /* ================= TARJETAS ================= */
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:22px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:22px;
+    }
+
+    .card{
+      background:var(--blanco);
+      border-radius:16px;
+      padding:26px;
+      box-shadow:var(--sombra);
+      transition:.2s;
+    }
+
+    .card:hover{
+      transform:translateY(-4px);
+    }
+
+    .card h3{
+      color:var(--verde);
+      margin:.6rem 0 .5rem;
+      font-size:1.1rem;
+    }
+
+    .card ul{
+      padding-left:20px;
+      font-size:.93rem;
+      color:var(--texto);
+    }
+
+    .card li{
+      margin-bottom:.35rem;
+    }
+
+    .chip{
+      display:inline-block;
+      background:var(--verde-suave);
+      color:var(--verde);
+      padding:3px 12px;
+      border-radius:20px;
+      font-size:.78rem;
+      font-weight:700;
+    }
+
+    /* ================= TABLAS ================= */
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      background:#fff;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--sombra);
+      font-size:.92rem;
+    }
+
+    th{
+      background:var(--verde);
+      color:#fff;
+      padding:12px;
+      text-align:left;
+    }
+
+    td{
+      padding:11px 12px;
+      border-bottom:1px solid #e8f0e6;
+    }
+
+    tr:last-child td{
+      border-bottom:none;
+    }
+
+    /* ================= CALCULADORAS ================= */
+
+    .tool{
+      background:#fff;
+      border-radius:16px;
+      padding:26px;
+      box-shadow:var(--sombra);
+    }
+
+    .tool h3{
+      color:var(--verde);
+      margin-bottom:8px;
+      font-size:1.05rem;
+    }
+
+    .tool label{
+      display:block;
+      font-weight:600;
+      margin:12px 0 4px;
+      font-size:.9rem;
+    }
+
+    .tool input,
+    .tool select{
+      width:100%;
+      padding:10px 12px;
+      border:2px solid #dce8da;
+      border-radius:10px;
+      font-size:1rem;
+      font-family:inherit;
+    }
+
+    .tool input:focus,
+    .tool select:focus{
+      outline:none;
+      border-color:var(--verde-claro);
+    }
+
+    /* RESULTADOS NORMALES */
+
+    .resultado{
+      margin-top:16px;
+      padding:16px;
+      border-radius:12px;
+      background:#e8f5e9;
+      color:var(--verde);
+      font-weight:normal;
+      display:none;
+      font-size:.9rem;
+      line-height:1.5;
+    }
+
+    .resultado b{
+      font-size:1rem;
+    }
+
+    /* ADVERTENCIAS ROJAS */
+
+    .resultado.error{
+      background:var(--rojo-fondo);
+      color:var(--rojo);
+      border-left:5px solid #e53935;
+    }
+
+    /* IMC BAJO PESO */
+
+    .resultado.bajo-peso{
+      background:var(--amarillo-fondo);
+      color:#ef6c00;
+      border-left:5px solid var(--amarillo);
+    }
+
+    /* IMC NORMAL */
+
+    .resultado.normal{
+      background:#e8f5e9;
+      color:#2e7d32;
+      border-left:5px solid #43a047;
+    }
+
+    /* IMC SOBREPESO */
+
+    .resultado.sobrepeso{
+      background:var(--naranja-fondo);
+      color:#ef6c00;
+      border-left:5px solid #fb8c00;
+    }
+
+    /* IMC OBESIDAD */
+
+    .resultado.obesidad{
+      background:var(--rojo-fondo);
+      color:#c62828;
+      border-left:5px solid #e53935;
+    }
+
+    .pregunta{
+      padding:14px 0;
+      border-bottom:1px solid #eef3ec;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+    }
+
+    .pregunta:last-of-type{
+      border-bottom:none;
+    }
+
+    .pregunta input{
+      width:20px;
+      height:20px;
+      accent-color:var(--verde);
+      flex-shrink:0;
+    }
+
+    /* ================= MITOS ================= */
+
+    .mito{
+      background:#fff3e0;
+      border-left:5px solid #fb8c00;
+    }
+
+    .mito .etiqueta{
+      color:#e65100;
+      font-size:.75rem;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    .realidad{
+      background:#e8f5e9;
+      border-left:5px solid var(--verde);
+    }
+
+    .realidad .etiqueta{
+      color:var(--verde);
+      font-size:.75rem;
+      font-weight:800;
+      text-transform:uppercase;
+    }
+
+    /* ================= TIMELINE ================= */
+
+    .timeline{
+      position:relative;
+      padding-left:30px;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:9px;
+      top:6px;
+      bottom:6px;
+      width:3px;
+      background:var(--verde-suave);
+      border-radius:3px;
+    }
+
+    .tl-item{
+      position:relative;
+      margin-bottom:20px;
+    }
+
+    .tl-item::before{
+      content:"";
+      position:absolute;
+      left:-27px;
+      top:6px;
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      background:var(--verde-claro);
+      border:3px solid #fff;
+      box-shadow:var(--sombra);
+    }
+
+    .tl-item b{
+      color:var(--verde);
+    }
+
+    /* ================= PROYECTO ================= */
+
+    .proyecto-box{
+      background:linear-gradient(
+        135deg,
+        var(--verde),
+        var(--verde-claro)
+      );
+      color:#fff;
+      border-radius:20px;
+      padding:45px;
+      text-align:center;
+    }
+
+    .proyecto-box h2{
+      color:#fff;
+    }
+
+    .proyecto-box p{
+      max-width:700px;
+      margin:0 auto 1.5rem;
+      opacity:.95;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer{
+      background:#1b3a1e;
+      color:#c8e6c9;
+      padding:40px 0;
+      text-align:center;
+      font-size:.85rem;
+    }
+
+    footer a{
+      color:#a5d6a7;
+    }
+
+    /* ================= MÓVIL ================= */
+
+    @media(max-width:760px){
+
+      nav ul{
+        display:none;
+        position:absolute;
+        top:64px;
+        left:0;
+        right:0;
+        background:#fff;
+        flex-direction:column;
+        padding:18px;
+        gap:14px;
+        box-shadow:var(--sombra);
+      }
+
+      nav ul.abierto{
+        display:flex;
+      }
+
+      .menu-btn{
+        display:block;
+      }
+
+      .hero h1{
+        font-size:2rem;
+      }
+
+      h2{
+        font-size:1.5rem;
+      }
+
+      .proyecto-box{
+        padding:30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+  <div class="container nav">
+
+    <a class="logo" href="#inicio">
+      Vida<span>Balance</span>
+    </a>
+
+    <button
+      class="menu-btn"
+      id="menuBtn"
+      aria-label="Abrir menú"
+      aria-expanded="false">
+      ☰
+    </button>
+
+    <nav>
+      <ul id="menu">
+        <li><a href="#nutricion">Nutrición</a></li>
+        <li><a href="#ejercicio">Ejercicio</a></li>
+        <li><a href="#mente">Salud Mental</a></li>
+        <li><a href="#sueno">Sueño</a></li>
+        <li><a href="#hidratacion">Hidratación</a></li>
+        <li><a href="#herramientas">Herramientas</a></li>
+        <li><a href="#mitos">Mitos</a></li>
+        <li><a href="#habitos">Hábitos</a></li>
+        <li><a href="#proyecto">Proyecto</a></li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
+
+
+<!-- ================= INICIO ================= -->
+
+<section class="hero" id="inicio">
+
+  <div class="container">
+
+    <h1>Transforma tu vida con hábitos saludables</h1>
+
+    <p>
+      Tu guía completa y gratuita de nutrición, ejercicio,
+      salud mental, sueño e hidratación.
+      Información clara, calculadoras interactivas
+      y un plan para empezar hoy mismo.
+    </p>
+
+    <a href="#herramientas" class="btn btn-blanco">
+      Probar las calculadoras
+    </a>
+
+    <div class="stats">
+
+      <div class="stat">
+        <b>5</b>
+        <span>Áreas clave del bienestar</span>
+      </div>
+
+      <div class="stat">
+        <b>150 min</b>
+        <span>Actividad semanal recomendada</span>
+      </div>
+
+      <div class="stat">
+        <b>400 g</b>
+        <span>Frutas y verduras al día</span>
+      </div>
+
+      <div class="stat">
+        <b>100%</b>
+        <span>Gratuito y sin registro</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= NUTRICIÓN ================= -->
+
+<section class="section" id="nutricion">
+
+  <div class="container">
+
+    <h2>Nutrición</h2>
+
+    <p class="lead">
+      Comer bien no es hacer dieta: es darle a tu cuerpo
+      los nutrientes que necesita para tener energía,
+      concentración y defensas fuertes.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <span class="chip">Macronutriente</span>
+        <h3>Carbohidratos</h3>
+        <p style="font-size:.9rem">
+          Son una importante fuente de energía.
+          Prefiere avena, arroz integral, quinua,
+          pan integral y legumbres.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="chip">Macronutriente</span>
+        <h3>Proteínas</h3>
+        <p style="font-size:.9rem">
+          Ayudan a construir y reparar tejidos.
+          Se encuentran en pollo, pescado, huevos,
+          lácteos, frijoles, lentejas y tofu.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="chip">Macronutriente</span>
+        <h3>Grasas saludables</h3>
+        <p style="font-size:.9rem">
+          Son importantes para el organismo.
+          Algunas fuentes son aguacate,
+          aceite de oliva, nueces y semillas.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="chip">Micronutriente</span>
+        <h3>Vitaminas</h3>
+        <p style="font-size:.9rem">
+          Las vitaminas participan en diferentes
+          funciones del organismo.
+          Se encuentran principalmente en frutas,
+          verduras y otros alimentos variados.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="chip">Micronutriente</span>
+        <h3>Minerales</h3>
+        <p style="font-size:.9rem">
+          El hierro, calcio, potasio y magnesio
+          son algunos minerales importantes
+          para el funcionamiento del cuerpo.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="chip">Importante</span>
+        <h3>Lo que conviene limitar</h3>
+
+        <ul>
+          <li>Azúcares añadidos</li>
+          <li>Ultraprocesados</li>
+          <li>Exceso de sal</li>
+          <li>Alcohol y tabaco</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div style="margin-top:34px" class="grid-2">
+
+      <div class="card">
+
+        <h3>El método del plato saludable</h3>
+
+        <ul>
+          <li><b>½ plato:</b> frutas y verduras</li>
+          <li><b>¼ plato:</b> proteínas</li>
+          <li><b>¼ plato:</b> granos integrales</li>
+          <li>Acompaña con agua</li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Consejos de alimentación</h3>
+
+        <ul>
+          <li>Come despacio</li>
+          <li>Consume frutas y verduras</li>
+          <li>Lee las etiquetas</li>
+          <li>Planifica tus compras</li>
+          <li>Cocina en casa</li>
+          <li>Prefiere agua</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= EJERCICIO ================= -->
+
+<section class="section section-alt" id="ejercicio">
+
+  <div class="container">
+
+    <h2>Ejercicio físico</h2>
+
+    <p class="lead">
+      Mantenerse físicamente activo puede contribuir
+      al bienestar general y ayudar a mantener
+      una buena condición física.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>Cardio</h3>
+        <p style="font-size:.9rem">
+          Caminar, correr, nadar, andar en bicicleta,
+          bailar o saltar la cuerda.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Fuerza</h3>
+        <p style="font-size:.9rem">
+          Flexiones, sentadillas, planchas,
+          pesas y bandas elásticas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Flexibilidad</h3>
+        <p style="font-size:.9rem">
+          Estiramientos, yoga, pilates
+          y ejercicios de movilidad.
+        </p>
+      </div>
+
+    </div>
+
+    <h3 style="color:var(--verde);margin:34px 0 14px">
+       Rutina semanal de ejemplo
+    </h3>
+
+    <table>
+
+      <tr>
+        <th>Día</th>
+        <th>Actividad</th>
+        <th>Duración</th>
+      </tr>
+
+      <tr>
+        <td>Lunes</td>
+        <td>Caminata rápida</td>
+        <td>30 min</td>
+      </tr>
+
+      <tr>
+        <td>Martes</td>
+        <td>Ejercicios de fuerza</td>
+        <td>30 min</td>
+      </tr>
+
+      <tr>
+        <td>Miércoles</td>
+        <td>Paseo ligero</td>
+        <td>20 min</td>
+      </tr>
+
+      <tr>
+        <td>Jueves</td>
+        <td>Fuerza</td>
+        <td>30 min</td>
+      </tr>
+
+      <tr>
+        <td>Viernes</td>
+        <td>Cardio moderado</td>
+        <td>30 min</td>
+      </tr>
+
+      <tr>
+        <td>Sábado</td>
+        <td>Yoga o movilidad</td>
+        <td>40 min</td>
+      </tr>
+
+      <tr>
+        <td>Domingo</td>
+        <td>Descanso</td>
+        <td>-</td>
+      </tr>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SALUD MENTAL ================= -->
+
+<section class="section" id="mente">
+
+  <div class="container">
+
+    <h2>Salud mental y emocional</h2>
+
+    <p class="lead">
+      Cuidar la salud mental es una parte importante
+      del bienestar general.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>Respiración</h3>
+        <p style="font-size:.9rem">
+          Dedica algunos minutos a respirar lentamente
+          y concentrarte en tu respiración.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Desconexión digital</h3>
+        <p style="font-size:.9rem">
+          Establece momentos del día sin pantallas
+          y reduce las notificaciones innecesarias.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Diario de gratitud</h3>
+        <p style="font-size:.9rem">
+          Escribe algunas cosas positivas
+          que hayan ocurrido durante el día.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Conexión social</h3>
+        <p style="font-size:.9rem">
+          Habla con familiares, amigos
+          y personas de confianza.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Atención plena</h3>
+        <p style="font-size:.9rem">
+          Dedica unos minutos a observar
+          tu respiración y tus pensamientos.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Contacto con la naturaleza</h3>
+        <p style="font-size:.9rem">
+          Pasear por parques y espacios verdes
+          puede ser una actividad agradable.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SUEÑO ================= -->
+
+<section class="section section-alt" id="sueno">
+
+  <div class="container">
+
+    <h2>Sueño reparador</h2>
+
+    <p class="lead">
+      Dormir adecuadamente es importante para
+      el descanso, la memoria y el bienestar.
+    </p>
+
+    <div class="grid-2">
+
+      <div>
+
+        <h3 style="color:var(--verde);margin-bottom:14px">
+          Horas de sueño recomendadas
+        </h3>
+
+        <table>
+
+          <tr>
+            <th>Edad</th>
+            <th>Horas por día</th>
+          </tr>
+
+          <tr>
+            <td>1 a 2 años</td>
+            <td>11 a 14</td>
+          </tr>
+
+          <tr>
+            <td>3 a 5 años</td>
+            <td>10 a 13</td>
+          </tr>
+
+          <tr>
+            <td>6 a 13 años</td>
+            <td>9 a 11</td>
+          </tr>
+
+          <tr>
+            <td>14 a 17 años</td>
+            <td>8 a 10</td>
+          </tr>
+
+          <tr>
+            <td>18 a 64 años</td>
+            <td>7 a 9</td>
+          </tr>
+
+          <tr>
+            <td>65+ años</td>
+            <td>7 a 8</td>
+          </tr>
+
+        </table>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Consejos para dormir mejor</h3>
+
+        <ul>
+          <li>Mantén horarios regulares</li>
+          <li>Reduce las pantallas antes de dormir</li>
+          <li>Mantén la habitación cómoda</li>
+          <li>Evita exceso de cafeína</li>
+          <li>Realiza actividades relajantes</li>
+        </ul>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= HIDRATACIÓN ================= -->
+
+<section class="section" id="hidratacion">
+
+  <div class="container">
+
+    <h2>Hidratación</h2>
+
+    <p class="lead">
+      Mantener una buena hidratación ayuda al organismo
+      a realizar correctamente diferentes funciones.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+
+        <h3>¿Cuánta agua beber?</h3>
+
+        <p style="font-size:.9rem">
+          Las necesidades de agua pueden variar
+          según la actividad física, el clima,
+          la alimentación y otras condiciones.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Señales de deshidratación</h3>
+
+        <p style="font-size:.9rem">
+          Algunas señales pueden ser sed intensa,
+          orina oscura, cansancio, mareos
+          o boca seca.
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Trucos para beber más</h3>
+
+        <p style="font-size:.9rem">
+          Lleva una botella reutilizable,
+          bebe agua durante las comidas
+          y establece recordatorios.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= HERRAMIENTAS ================= -->
+
+<section class="section section-alt" id="herramientas">
+
+  <div class="container">
+
+    <h2>Herramientas interactivas</h2>
+
+    <p class="lead">
+      Utiliza estas calculadoras para obtener
+      estimaciones orientativas sobre diferentes
+      aspectos relacionados con el bienestar.
+    </p>
+
+    <div class="grid-3">
+
+      <!-- IMC -->
+
+      <div class="tool">
+
+        <h3>Calculadora de IMC</h3>
+
+        <label for="peso">
+          Peso (kg)
+        </label>
+
+        <input
+          type="number"
+          id="peso"
+          placeholder="Ej: 65"
+          min="1"
+          max="500"
+        >
+
+        <label for="altura">
+          Altura (cm)
+        </label>
+
+        <input
+          type="number"
+          id="altura"
+          placeholder="Ej: 170"
+          min="1"
+          max="250"
+        >
+
+        <button
+          type="button"
+          id="btnIMC"
+          class="btn btn-verde"
+          style="margin-top:16px;width:100%">
+          Calcular IMC
+        </button>
+
+        <div
+          class="resultado"
+          id="resIMC">
+        </div>
+
+      </div>
+
+
+      <!-- PESO IDEAL SEGÚN ALTURA E IMC -->
+
+      <div class="tool">
+
+        <h3>Calculadora de peso orientativo</h3>
+
+        <p style="font-size:.83rem;margin-bottom:8px">
+          Calcula un rango de peso orientativo a partir de tu altura
+          usando los valores de IMC de 18,5 a 24,9.
+        </p>
+
+        <label for="alturaIdeal">
+          Altura (cm)
+        </label>
+
+        <input
+          type="number"
+          id="alturaIdeal"
+          placeholder="Ej: 170"
+          min="1"
+          max="250"
+        >
+
+        <label for="pesoIdealActual">
+          Peso actual (kg) <span style="font-weight:400;color:var(--gris)">(opcional)</span>
+        </label>
+
+        <input
+          type="number"
+          id="pesoIdealActual"
+          placeholder="Ej: 65"
+          min="1"
+          max="500"
+        >
+
+        <button
+          type="button"
+          id="btnPesoIdeal"
+          class="btn btn-verde"
+          style="margin-top:16px;width:100%">
+          Calcular peso orientativo
+        </button>
+
+        <div
+          class="resultado"
+          id="resPesoIdeal"
+          aria-live="polite">
+        </div>
+
+      </div>
+
+
+      <!-- AGUA -->
+
+      <div class="tool">
+
+        <h3>Calculadora de agua</h3>
+
+        <label for="pesoAgua">
+          Peso (kg)
+        </label>
+
+        <input
+          type="number"
+          id="pesoAgua"
+          placeholder="Ej: 65"
+          min="1"
+          max="500"
+        >
+
+        <label for="actividad">
+          Nivel de actividad
+        </label>
+
+        <select id="actividad">
+
+          <option value="1">
+            Sedentaria
+          </option>
+
+          <option value="1.5">
+            Moderada
+          </option>
+
+          <option value="2">
+            Alta
+          </option>
+
+        </select>
+
+        <button
+          type="button"
+          id="btnAgua"
+          class="btn btn-verde"
+          style="margin-top:16px;width:100%">
+          Calcular agua
+        </button>
+
+        <div
+          class="resultado"
+          id="resAgua">
+        </div>
+
+      </div>
+
+
+      <!-- CALORÍAS -->
+
+      <div class="tool">
+
+        <h3>Calculadora de calorías</h3>
+
+        <label for="sexoCal">
+          Sexo
+        </label>
+
+        <select id="sexoCal">
+
+          <option value="hombre">
+            Hombre
+          </option>
+
+          <option value="mujer">
+            Mujer
+          </option>
+
+        </select>
+
+        <label for="pesoCal">
+          Peso (kg)
+        </label>
+
+        <input
+          type="number"
+          id="pesoCal"
+          placeholder="Ej: 65"
+        >
+
+        <label for="alturaCal">
+          Altura (cm)
+        </label>
+
+        <input
+          type="number"
+          id="alturaCal"
+          placeholder="Ej: 170"
+        >
+
+        <label for="edadCal">
+          Edad
+        </label>
+
+        <input
+          type="number"
+          id="edadCal"
+          placeholder="Ej: 25"
+        >
+
+        <label for="actividadCal">
+          Nivel de actividad
+        </label>
+
+        <select id="actividadCal">
+
+          <option value="1.2">
+            Sedentario
+          </option>
+
+          <option value="1.375">
+            Ligero
+          </option>
+
+          <option value="1.55">
+            Moderado
+          </option>
+
+          <option value="1.725">
+            Muy activo
+          </option>
+
+          <option value="1.9">
+            Extremo
+          </option>
+
+        </select>
+
+        <button
+          type="button"
+          id="btnCalorias"
+          class="btn btn-verde"
+          style="margin-top:16px;width:100%">
+          Calcular calorías
+        </button>
+
+        <div
+          class="resultado"
+          id="resCalorias">
+        </div>
+
+      </div>
+
+
+      <!-- TEST -->
+
+      <div class="tool">
+
+        <h3>Test de hábitos</h3>
+
+        <p style="font-size:.83rem;margin-bottom:8px">
+          Marca las afirmaciones que sean verdaderas:
+        </p>
+
+        <div id="quiz">
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Comí frutas o verduras
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Hice actividad física
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Bebí suficiente agua
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Dormí 7 horas o más
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Evité ultraprocesados
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Dediqué tiempo a relajarme
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Cené de forma equilibrada
+            </span>
+          </label>
+
+          <label class="pregunta">
+            <input type="checkbox" class="habito">
+            <span style="font-size:.87rem">
+              Pasé tiempo con personas cercanas
+            </span>
+          </label>
+
+        </div>
+
+        <button
+          type="button"
+          id="btnTest"
+          class="btn btn-verde"
+          style="margin-top:14px;width:100%">
+          Ver resultado
+        </button>
+
+        <button
+          type="button"
+          id="btnReset"
+          class="btn btn-outline"
+          style="margin-top:8px;width:100%">
+          Reiniciar test
+        </button>
+
+        <div
+          class="resultado"
+          id="resTest">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MITOS ================= -->
+
+<section class="section" id="mitos">
+
+  <div class="container">
+
+    <h2>Mitos vs Realidades</h2>
+
+    <p class="lead">
+      Información básica para diferenciar algunos
+      mitos comunes relacionados con la salud.
+    </p>
+
+    <div class="grid-2">
+
+      <div class="card mito">
+        <span class="etiqueta">Mito</span>
+        <p>
+          "Los carbohidratos deben eliminarse."
+        </p>
+      </div>
+
+      <div class="card realidad">
+        <span class="etiqueta">Realidad</span>
+        <p>
+          Los carbohidratos pueden formar parte
+          de una alimentación equilibrada.
+        </p>
+      </div>
+
+      <div class="card mito">
+        <span class="etiqueta">Mito</span>
+        <p>
+          "Solo hay que hacer ejercicio para perder peso."
+        </p>
+      </div>
+
+      <div class="card realidad">
+        <span class="etiqueta">Realidad</span>
+        <p>
+          La actividad física también contribuye
+          al bienestar general y a la condición física.
+        </p>
+      </div>
+
+      <div class="card mito">
+        <span class="etiqueta">Mito</span>
+        <p>
+          "Todas las personas necesitan exactamente
+          la misma cantidad de agua."
+        </p>
+      </div>
+
+      <div class="card realidad">
+        <span class="etiqueta">Realidad</span>
+        <p>
+          Las necesidades de agua pueden variar
+          de una persona a otra.
+        </p>
+      </div>
+
+      <div class="card mito">
+        <span class="etiqueta">Mito</span>
+        <p>
+          "Dormir poco siempre significa ser más productivo."
+        </p>
+      </div>
+
+      <div class="card realidad">
+        <span class="etiqueta">Realidad</span>
+        <p>
+          Dormir adecuadamente es importante
+          para el descanso y el funcionamiento diario.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= HÁBITOS ================= -->
+
+<section class="section section-alt" id="habitos">
+
+  <div class="container">
+
+    <h2>Cómo crear hábitos que duren</h2>
+
+    <p class="lead">
+      Los cambios pequeños y constantes pueden ayudar
+      a construir hábitos saludables.
+    </p>
+
+    <div class="grid-2">
+
+      <div class="card">
+
+        <h3>5 pasos</h3>
+
+        <ul>
+          <li><b>Empieza pequeño:</b> realiza cambios sencillos.</li>
+          <li><b>Una cosa a la vez:</b> evita cambiar todo de golpe.</li>
+          <li><b>Crea una rutina:</b> repite el hábito regularmente.</li>
+          <li><b>Organiza tu entorno:</b> facilita las decisiones saludables.</li>
+          <li><b>Reconoce tus avances:</b> mantén la constancia.</li>
+        </ul>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Ejemplo de día saludable</h3>
+
+        <div class="timeline">
+
+          <div class="tl-item">
+            <b>06:30</b>
+            Despertar y beber agua
+          </div>
+
+          <div class="tl-item">
+            <b>07:00</b>
+            Desayuno equilibrado
+          </div>
+
+          <div class="tl-item">
+            <b>09:00</b>
+            Actividades y pausas
+          </div>
+
+          <div class="tl-item">
+            <b>18:00</b>
+            Actividad física
+          </div>
+
+          <div class="tl-item">
+            <b>19:30</b>
+            Cena
+          </div>
+
+          <div class="tl-item">
+            <b>21:00</b>
+            Relajación
+          </div>
+
+          <div class="tl-item">
+            <b>22:00</b>
+            Dormir
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PROYECTO ================= -->
+
+<section class="section" id="proyecto">
+
+  <div class="container">
+
+    <div class="proyecto-box">
+
+      <h2>Este sitio es un proyecto benéfico</h2>
+
+      <p>
+        VidaBalance nace como un proyecto de informática
+        con impacto social: utilizar la tecnología
+        para acercar información sobre bienestar
+        y hábitos saludables.
+      </p>
+
+      <p>
+        <b>¿Cómo puedes ayudar?</b>
+      </p>
+
+      <p style="font-size:.95rem">
+        Comparte este sitio con escuelas y comunidades,
+        utiliza el material para actividades educativas
+        y ayuda a informar sobre hábitos saludables.
+      </p>
+
+      <a
+        href="mailto:contacto@vidabalance.org"
+        class="btn btn-blanco">
+        Contacta al equipo
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="container">
+
+    <p>
+      <b>VidaBalance</b>
+      · Proyecto de informática para el bienestar
+      · <span id="anio"></span>
+    </p>
+
+    <p>
+      Aviso importante: este sitio ofrece información
+      general de educación para la salud y no sustituye
+      la atención de un profesional de salud.
+    </p>
+
+    <p>
+      Hecho con código libre.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  const $ = (id) => document.getElementById(id);
+
+
+  /* ==========================================
+     FUNCIÓN PARA MOSTRAR RESULTADOS
+     ========================================== */
+
+  function mostrar(id, html, clase = ""){
+
+    const elemento = $(id);
+
+    elemento.innerHTML = html;
+
+    elemento.className = "resultado";
+
+    if(clase !== ""){
+      elemento.classList.add(clase);
+    }
+
+    elemento.style.display = "block";
+  }
+
+
+  /* ==========================================
+     CALCULADORA DE IMC
+     ========================================== */
+
+  $("btnIMC").addEventListener("click", function(){
+
+    const peso = parseFloat($("peso").value);
+    const alturaCm = parseFloat($("altura").value);
+
+
+    /* Validar peso */
+
+    if(
+      !Number.isFinite(peso) ||
+      peso <= 0 ||
+      peso > 500
+    ){
+
+      mostrar(
+        "resIMC",
+
+        "<b> Peso no válido</b><br>" +
+        "Introduce un peso entre 1 y 500 kg.",
+
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* Validar altura */
+
+    if(
+      !Number.isFinite(alturaCm) ||
+      alturaCm <= 0 ||
+      alturaCm > 250
+    ){
+
+      mostrar(
+        "resIMC",
+
+        "<b> Altura no válida</b><br>" +
+        "Introduce una altura entre 1 y 250 cm.",
+
+        "error"
+      );
+
+      return;
+    }
+
+
+    /* Convertir centímetros a metros */
+
+    const alturaM = alturaCm / 100;
+
+
+    /* Calcular IMC */
+
+    const imc = peso / (alturaM * alturaM);
+
+
+    let categoria;
+    let clase;
+
+
+    /* Determinar categoría */
+
+    if(imc < 18.5){
+
+      categoria = "Bajo peso";
+      clase = "bajo-peso";
+
+    }
+
+    else if(imc < 25){
+
+      categoria = "Peso normal";
+      clase = "normal";
+
+    }
+
+    else if(imc < 30){
+
+      categoria = "Sobrepeso";
+      clase = "sobrepeso";
+
+    }
+
+    else{
+
+      categoria = "Obesidad";
+      clase = "obesidad";
+
+    }
+
+
+    /* Mostrar resultado */
+
+    mostrar(
+
+      "resIMC",
+
+      "<b>Tu IMC es " +
+      imc.toFixed(1) +
+      "</b><br>" +
+
+      "Categoría orientativa: " +
+      "<strong>" +
+      categoria +
+      "</strong>" +
+
+      "<br><br>" +
+
+      "<small>" +
+      "El IMC es una medida orientativa " +
+      "y no sustituye una evaluación profesional." +
+      "</small>",
+
+      clase
+    );
+
+  });
+
+
+  /* ==========================================
+     CALCULADORA DE PESO ORIENTATIVO
+     SEGÚN ALTURA E IMC
+     ========================================== */
+
+  $("btnPesoIdeal").addEventListener("click", function(){
+
+    const alturaCm = parseFloat($("alturaIdeal").value);
+    const pesoActual = parseFloat($("pesoIdealActual").value);
+
+    if(
+      !Number.isFinite(alturaCm) ||
+      alturaCm <= 0 ||
+      alturaCm > 250
+    ){
+
+      mostrar(
+        "resPesoIdeal",
+        "<b>Altura no válida</b><br>" +
+        "Introduce una altura entre 1 y 250 cm.",
+        "error"
+      );
+
+      return;
+    }
+
+    if(
+      $("pesoIdealActual").value !== "" &&
+      (
+        !Number.isFinite(pesoActual) ||
+        pesoActual <= 0 ||
+        pesoActual > 500
+      )
+    ){
+
+      mostrar(
+        "resPesoIdeal",
+        "<b>Peso no válido</b><br>" +
+        "Introduce un peso entre 1 y 500 kg o deja el campo vacío.",
+        "error"
+      );
+
+      return;
+    }
+
+    const alturaM = alturaCm / 100;
+
+    /*
+      Rango orientativo para adultos:
+      IMC mínimo = 18.5
+      IMC máximo = 24.9
+    */
+
+    const pesoMin = 18.5 * (alturaM * alturaM);
+    const pesoMax = 24.9 * (alturaM * alturaM);
+
+    let resultado =
+      "<b>Para " + alturaCm.toFixed(0) + " cm:</b><br>" +
+      "Rango de peso orientativo: <strong>" +
+      pesoMin.toFixed(1) + " kg a " +
+      pesoMax.toFixed(1) + " kg</strong><br>" +
+      "Este rango corresponde aproximadamente a un IMC de 18,5 a 24,9.";
+
+    if(Number.isFinite(pesoActual) && pesoActual > 0){
+
+      const imcActual = pesoActual / (alturaM * alturaM);
+
+      let categoriaActual;
+
+      if(imcActual < 18.5){
+        categoriaActual = "Bajo peso";
+      }
+      else if(imcActual < 25){
+        categoriaActual = "Peso normal";
+      }
+      else if(imcActual < 30){
+        categoriaActual = "Sobrepeso";
+      }
+      else{
+        categoriaActual = "Obesidad";
+      }
+
+      resultado +=
+        "<br><br>" +
+        "Con " + pesoActual.toFixed(1) + " kg, tu IMC sería " +
+        "<strong>" + imcActual.toFixed(1) + "</strong> (" +
+        categoriaActual + ").";
+    }
+
+    resultado +=
+      "<br><br><small>" +
+      "Es una estimación educativa. El IMC no determina por sí solo " +
+      "un peso ideal y no sustituye una evaluación profesional." +
+      "</small>";
+
+    mostrar("resPesoIdeal", resultado, "normal");
+
+  });
+
+
+  /* ==========================================
+     CALCULADORA DE AGUA
+     ========================================== */
+
+  $("btnAgua").addEventListener("click", function(){
+
+    const peso = parseFloat($("pesoAgua").value);
+
+    const actividad =
+      parseFloat($("actividad").value);
+
+
+    if(
+      !Number.isFinite(peso) ||
+      peso <= 0 ||
+      peso > 500
+    ){
+
+      mostrar(
+
+        "resAgua",
+
+        "<b> Peso no válido</b><br>" +
+        "Introduce un valor entre 1 y 500 kg.",
+
+        "error"
+
+      );
+
+      return;
+    }
+
+
+    /*
+      Estimación sencilla:
+      35 ml por kg.
+    */
+
+    const litros =
+      (peso * 35 * actividad) / 1000;
+
+
+    const vasos =
+      litros * 4;
+
+
+    mostrar(
+
+      "resAgua",
+
+      "<b> Estimación: " +
+      litros.toFixed(2) +
+      " litros al día</b><br>" +
+
+      "Aproximadamente " +
+      vasos.toFixed(1) +
+      " vasos de 250 ml." +
+
+      "<br><br>" +
+
+      "<small>" +
+      "Es una estimación orientativa. " +
+      "Las necesidades pueden variar según " +
+      "clima, alimentación, salud y ejercicio." +
+      "</small>"
+
+    );
+
+  });
+
+
+  /* ==========================================
+     CALCULADORA DE CALORÍAS
+     ========================================== */
+
+  $("btnCalorias").addEventListener("click", function(){
+
+    const sexo =
+      $("sexoCal").value;
+
+    const peso =
+      parseFloat($("pesoCal").value);
+
+    const altura =
+      parseFloat($("alturaCal").value);
+
+    const edad =
+      parseFloat($("edadCal").value);
+
+    const actividad =
+      parseFloat($("actividadCal").value);
+
+
+    /* Validar datos */
+
+    if(
+      !Number.isFinite(peso) ||
+      peso <= 0 ||
+      peso > 500 ||
+
+      !Number.isFinite(altura) ||
+      altura <= 0 ||
+      altura > 250 ||
+
+      !Number.isFinite(edad) ||
+      edad < 13 ||
+      edad > 120
+    ){
+
+      mostrar(
+
+        "resCalorias",
+
+        "<b> Revisa los datos</b><br>" +
+
+        "Peso: 1–500 kg.<br>" +
+
+        "Altura: 1–250 cm.<br>" +
+
+        "Edad: 13–120 años.",
+
+        "error"
+
+      );
+
+      return;
+    }
+
+
+    /* Fórmula Mifflin-St Jeor */
+
+    let tmb;
+
+
+    if(sexo === "hombre"){
+
+      tmb =
+        (10 * peso) +
+        (6.25 * altura) -
+        (5 * edad) +
+        5;
+
+    }
+
+    else{
+
+      tmb =
+        (10 * peso) +
+        (6.25 * altura) -
+        (5 * edad) -
+        161;
+
+    }
+
+
+    const mantenimiento =
+      tmb * actividad;
+
+
+    mostrar(
+
+      "resCalorias",
+
+      "<b> Gasto energético estimado: " +
+
+      Math.round(mantenimiento) +
+
+      " kcal/día</b><br>" +
+
+      "Tasa metabólica basal estimada: " +
+
+      Math.round(tmb) +
+
+      " kcal/día." +
+
+      "<br><br>" +
+
+      "<small>" +
+
+      "Es una estimación educativa y " +
+      "no una indicación médica personalizada." +
+
+      "</small>"
+
+    );
+
+  });
+
+
+  /* ==========================================
+     TEST DE HÁBITOS
+     ========================================== */
+
+  $("btnTest").addEventListener("click", function(){
+
+    const checks =
+      document.querySelectorAll(".habito");
+
+
+    const puntos =
+      [...checks].filter(
+        c => c.checked
+      ).length;
+
+
+    const porcentaje =
+      Math.round(
+        (puntos / checks.length) * 100
+      );
+
+
+    let mensaje;
+
+
+    if(puntos <= 2){
+
+      mensaje =
+        "Puedes empezar con pequeños cambios " +
+        "y mantenerlos de forma constante.";
+
+    }
+
+    else if(puntos <= 5){
+
+      mensaje =
+        "Vas construyendo buenos hábitos. " +
+        "Puedes reforzar uno o dos aspectos.";
+
+    }
+
+    else{
+
+      mensaje =
+        "Has marcado muchos hábitos saludables. " +
+        "Continúa manteniendo la constancia.";
+
+    }
+
+
+    mostrar(
+
+      "resTest",
+
+      "<b> " +
+      puntos +
+      " de " +
+      checks.length +
+      " hábitos (" +
+      porcentaje +
+      "%)</b><br>" +
+
+      mensaje
+
+    );
+
+  });
+
+
+  /* ==========================================
+     REINICIAR TEST
+     ========================================== */
+
+  $("btnReset").addEventListener("click", function(){
+
+    document
+      .querySelectorAll(".habito")
+      .forEach(
+        c => c.checked = false
+      );
+
+
+    $("resTest").style.display = "none";
+
+    $("resTest").innerHTML = "";
+
+  });
+
+
+  /* ==========================================
+     MENÚ MÓVIL
+     ========================================== */
+
+  const menuBtn =
+    $("menuBtn");
+
+  const menu =
+    $("menu");
+
+
+  if(menuBtn && menu){
+
+    menuBtn.addEventListener(
+      "click",
+      function(){
+
+        const abierto =
+          menu.classList.toggle("abierto");
+
+
+        menuBtn.setAttribute(
+          "aria-expanded",
+          abierto ? "true" : "false"
+        );
+
+      }
+    );
+
+
+    menu
+      .querySelectorAll("a")
+      .forEach(function(a){
+
+        a.addEventListener(
+          "click",
+          function(){
+
+            menu.classList.remove(
+              "abierto"
+            );
+
+            menuBtn.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+  }
+
+
+  /* ==========================================
+     AÑO DEL FOOTER
+     ========================================== */
+
+  $("anio").textContent =
+    new Date().getFullYear();
+
+});
+
+</script>
+
+</body>
+</html>
